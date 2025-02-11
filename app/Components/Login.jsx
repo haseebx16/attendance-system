@@ -32,6 +32,7 @@ const Login = () => {
     );
 
     if (user) {
+      localStorage.setItem('user', user.username);
       window.location.href = user.redirect
     }
     else {
