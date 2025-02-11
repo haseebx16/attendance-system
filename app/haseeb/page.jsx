@@ -59,12 +59,6 @@ const Page = () => {
       <Navbar />
       <div className="flex text-white justify-between p-8">
         <h1 className="text-4xl">Welcome Abdul Haseeb!</h1>
-        <button className="bg-emerald-500 px-6 py-2 rounded-xl" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-
-      <div className="p-8 text-white">
         <button
           className="bg-blue-500 px-6 py-2 rounded-xl disabled:bg-gray-500"
           onClick={markAttendance}
@@ -72,6 +66,12 @@ const Page = () => {
         >
           {markedToday ? "Attendance Marked" : "Mark Attendance"}
         </button>
+        <button className="bg-emerald-500 px-6 py-2 rounded-xl" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
+
+      <div className="p-8 text-white">
 
         <h2 className="text-2xl mt-6">Attendance History</h2>
         <ul className="mt-2">
