@@ -20,7 +20,7 @@ const page = () => {
     <div className={`${font.className} bg-gradient-to-br from-sky-900 to-green-900 h-screen`}>
         <Navbar/>
         <div className='flex text-white justify-between p-8'>
-            <h1 className='text-5xl '>Dilawar</h1>
+            <h1 className='text-5xl '>Welcome Dilawar !</h1>
             <button className='bg-emerald-500 px-6 py-2 rounded-xl' onClick={handleLogout}>Logout</button>
         </div>
     </div>
