@@ -11,9 +11,9 @@ const Login = () => {
 
   const validUsers = [
     { username: "Admin", password: "admin", redirect: "/admin" },
-    { username: "Hashir", password: "teacher123", redirect: "/teacher" },
-    { username: "Haseeb", password: "student123", redirect: "/student" },
-    { username: "Dilawar", password: "staff123", redirect: "/staff" }
+    { username: "Hashir", password: "hashir123", redirect: "/hashir" },
+    { username: "Haseeb", password: "haseeb123", redirect: "/haseeb" },
+    { username: "Dilawar", password: "dilawar123", redirect: "/dilawar" }
   ];
 
   const changeVal = (e) => {
@@ -27,11 +27,15 @@ const Login = () => {
   }
 
   const redirect = () => {
-    if (fieldVal == "Admin" && passVal == "admin") {
-      window.location.href = "/admin"
+    const user = validUsers.find(
+      user => user.username === fieldVal && user.password === passVal
+    );
+
+    if (user) {
+      window.location.href = user.redirect
     }
     else {
-      alert("Wrong Credentials");
+      alert("Invalid Credentials");
     }
   }
 
