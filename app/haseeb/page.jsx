@@ -11,13 +11,17 @@ const Page = () => {
   const router = useRouter();
   const [attendance, setAttendance] = useState([]);
   const [markedToday, setMarkedToday] = useState(false);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    setUsername(storedUser || "Unknown User");
+
     const storedAttendance = JSON.parse(localStorage.getItem("attendance")) || [];
     setAttendance(storedAttendance);
 
     const today = new Date().toISOString().split("T")[0];
-    setMarkedToday(storedAttendance.some((entry) => entry.date === today));
+    setMarkedToday(storedAttendance.some((entry) => entry.date === today && entry.user === storedUser));
   }, []);
 
   const isWithinOfficeHours = () => {
@@ -39,13 +43,15 @@ const Page = () => {
     }
 
     const newEntry = {
+      user: username,
       date: new Date().toISOString().split("T")[0],
       time: new Date().toLocaleTimeString("en-US", { timeZone: "Asia/Karachi" }),
     };
 
-    const updatedAttendance = [...attendance, newEntry];
-    setAttendance(updatedAttendance);
+    const storedAttendance = JSON.parse(localStorage.getItem("attendance")) || [];
+    const updatedAttendance = [...storedAttendance, newEntry];
     localStorage.setItem("attendance", JSON.stringify(updatedAttendance));
+    setAttendance(updatedAttendance);
     setMarkedToday(true);
   };
 
